@@ -1,3 +1,5 @@
+import time
+
 from selenium import webdriver
 from flask import abort, Flask
 from selenium.webdriver.chrome.options import Options
@@ -22,6 +24,7 @@ class API(Flask):
             driver = webdriver.Chrome(chrome_options=self.options)
             driver.get(url)
             WebDriverWait(driver, 10)
+            time.sleep(10)
             html = driver.page_source
             driver.close()
             return html
