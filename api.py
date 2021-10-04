@@ -5,8 +5,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 
 class API(Flask):
-    def __init__(self, import_name: str):
-        super().__init__(import_name)
+    def __init__(self, import_name):
+        super(API, self).__init__(import_name)
         self.options = Options()
         self.options.add_argument('--headless')
         self.options.add_argument('--disable-gpu')
