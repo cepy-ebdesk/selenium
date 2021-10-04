@@ -21,7 +21,7 @@ class API(Flask):
         try:
             driver = webdriver.Chrome(chrome_options=self.options)
             driver.get(url)
-            WebDriverWait(driver, 5)
+            WebDriverWait(driver, 10)
             html = driver.page_source
             driver.close()
             return html
