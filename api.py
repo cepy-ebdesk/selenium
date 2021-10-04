@@ -10,6 +10,12 @@ class API(Flask):
         self.options = Options()
         self.options.add_argument('--headless')
         self.options.add_argument('--disable-gpu')
+        self.options.add_argument("start-maximized")  # open Browser in maximized mode
+        self.options.add_argument("disable-infobars")  # disabling infobars
+        self.options.add_argument("--disable-extensions")  # disabling extensions
+        self.options.add_argument("--disable-gpu")  # applicable to windows os only
+        self.options.add_argument("--disable-dev-shm-usage")  # overcome limited resource problems
+        self.options.add_argument("--no-sandbox")  # Bypass OS security model
 
     def html(self, url):
         try:
