@@ -21,11 +21,12 @@ class API(Flask):
         self.options.add_argument("--disable-dev-shm-usage")  # overcome limited resource problems
         self.options.add_argument("--no-sandbox")  # Bypass OS security model
 
-    def html(self, url):
+    def html(self, url, wait_for_el=None):
         try:
             driver = webdriver.Chrome(chrome_options=self.options)
             driver.get(url)
-            WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.CSS_SELECTOR, '.latest-featured')))
+            if wait_for_el:
+                WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.CSS_SELECTOR, wait_for_el)))
             html = driver.page_source
             driver.close()
             return html
